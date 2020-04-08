@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace SatanaDLL
 {
+    [Table("Bonds")]
     public class Node
     {
+        [Key]
+        public int id { get; set; }
         [DisplayName("Содержимое ноды"), NonSerialized]
         public Unit Unit { get; set; }
         [DisplayName("id ноды")]

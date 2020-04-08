@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SatanaDLL
+﻿namespace SatanaDLL
 {
-    public static class Extentions
+    public static class Extensions
     {
         /// <summary>
         /// Рекурсивный поиск по нодам
