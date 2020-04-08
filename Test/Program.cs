@@ -14,6 +14,17 @@ namespace Test
             Node node = new NodeCreate().CreateNodes();
             Console.WriteLine(node);
 
+            //Обновление уровней вложенности
+
+            List<Node> refresh = new List<Node>();
+            node.RefreshLevels(ref refresh);
+
+            Console.WriteLine(refresh);
+
+            //Просмотр числа узлов на каждом из уровней вложенности
+
+            var layers = node.NodeLayers(new Dictionary<int, int>());
+
             //  Поиск нод
 
             var searchNode = node.Find(2);
