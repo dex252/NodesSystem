@@ -1,0 +1,37 @@
+﻿@page
+@model AspNet.IndexModel
+@{
+    ViewData["Title"] = "Nodes";
+}
+
+<h1>Nodes</h1>
+
+<form method="get">
+    @if (@Model.node != null)
+    {
+    <div class="partial">
+        <div class="partial-text-id">@Model.node.nodeId</div>
+        <a class="btn btn-info btn-additional-style"
+           asp-page="./Redirected/Detail"
+           asp-route-nodeId="@Model.node.nodeId">
+            <i class="btn-text">Detail</i>
+        </a>
+        <a class="btn btn-success btn-additional-style"
+           asp-page="./Redirected/Detail"
+           asp-route-nodeId="@Model.node.nodeId">
+            <i class="btn-text">Create</i>
+        </a>
+        <a class="btn btn-warning btn-additional-style"
+           asp-page="./Redirected/Detail"
+           asp-route-nodeId="@Model.node.nodeId">
+            <i class="btn-text">Edit</i>
+        </a>
+        <a class="btn btn-danger btn-additional-style"
+           asp-page="./Redirected/Detail"
+           asp-route-nodeId="@Model.node.nodeId">
+            <i class="btn-text">Delete</i>
+        </a>
+        @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", Model.node)
+    </div>
+    }
+</form>

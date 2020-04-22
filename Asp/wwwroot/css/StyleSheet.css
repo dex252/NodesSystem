@@ -1,0 +1,29 @@
+﻿.partial {
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    min-height: 30px;
+    width: 100px;
+    margin-left: 100px;
+    margin-bottom: 3px;
+    padding-bottom: 2px;
+    text-align: center;
+}
+
+.partial-text-id {
+    color: black;
+    background: aquamarine;
+}
+
+.btn-text {
+    color: black;
+}
+
+.btn-additional-style {
+    display: flex;
+    margin: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
