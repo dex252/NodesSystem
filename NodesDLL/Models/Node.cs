@@ -23,12 +23,58 @@ namespace NodesDLL
         [DisplayName("Дочерние ноды"), NonSerialized]
         public List<INode> nodes { get; set; } = new List<INode>();
 
+        public Node(List<Node> bonds = null)
+        {
+            var root = bonds?.FirstOrDefault(e => e.parentId==null);
+            if (root != null)
+            {
+                id = root.id;
+                nodeId = root.nodeId;
+                bonds.Remove(root);
+
+                BondsFill(bonds, this);
+            }
+        }
+        /// <summary>
+        /// Заполнение нод связям id
+        /// </summary>
+        /// <param name="bonds"></param>
+        /// <param name="parent"></param>
+        public void BondsFill(List<Node> bonds, INode parent)
+        {
+            List<Node> childs = new List<Node>();
+            foreach (var b in bonds)
+            {
+                if (b.parentId == parent.nodeId)
+                {
+                    parent.Add(b);
+                    childs.Add(b);
+                }
+            }
+
+            if (childs.Count > 0)
+            {
+                foreach (var c in childs)
+                {
+                    bonds.Remove(c);
+                }
+            }
+
+            if (bonds.Count > 0)
+            {
+                foreach (var n in parent.nodes)
+                {
+                    BondsFill(bonds, n);
+                }
+            }
+        }
+
         /// <summary>
         /// Добавить ноду в список (вернет false, если такая нода с таким id уже существует в коллекции этой ноды).
         /// Корректно заполняет уровни вложенности только при одиночном добавлении узлов, в остальных случаях воспользуйтесь методом RefreshLevels.
         /// </summary>
         /// <param name="node"></param>
-        public bool Add(Node node)
+        public bool Add(INode node)
         {
             var item = nodes.FirstOrDefault(e => e.nodeId == node.nodeId);
 
@@ -116,7 +162,7 @@ namespace NodesDLL
 
             if (item != null)
             {
-                List<int?> collection = new List<int?>(); ;
+                List<int?> collection = new List<int?>();
                 item.MoveNode(ref collection);
                 var parent = this.Find(item.parentId);
                 parent.nodes.Remove(item);

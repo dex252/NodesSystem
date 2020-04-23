@@ -5,25 +5,25 @@
     @foreach (var node in Model.nodes)
      {
     <div class="partial">
-        <div class="partial-text-id">@node.nodeId</div>
+        <div class="partial-text-id">@node.Unit.name</div>
         <a class="btn btn-info btn-additional-style"
            asp-page="./Redirected/Detail"
-           asp-route-nodeId="@Model.nodeId">
+           asp-route-nodeId="@node.nodeId">
             <i class="btn-text">Detail</i>
         </a>
         <a class="btn btn-success btn-additional-style"
            asp-page="./Redirected/Detail"
-           asp-route-nodeId="@Model.nodeId">
-            <i class="btn-text">Create</i>
+           asp-route-nodeId="@node.nodeId">
+            <i class="btn-text">Add</i>
         </a>
         <a class="btn btn-warning btn-additional-style"
            asp-page="./Redirected/Detail"
-           asp-route-nodeId="@Model.nodeId">
+           asp-route-nodeId="@node.nodeId">
             <i class="btn-text">Edit</i>
         </a>
         <a class="btn btn-danger btn-additional-style"
            asp-page="./Redirected/Detail"
-           asp-route-nodeId="@Model.nodeId">
+           asp-route-nodeId="@node.nodeId">
             <i class="btn-text">Delete</i>
         </a>
         @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", node)

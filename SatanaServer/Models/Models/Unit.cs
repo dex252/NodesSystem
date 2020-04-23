@@ -3,13 +3,13 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NodesDLL
+namespace SatanaServer
 {
     [Table("units")]
     public class Unit
     {
         [Key]
-        public int? id { get; set; }
+        public int id { get; set; }
         [DisplayName("Тип подразделения")]
         public string type { get; set; }
         [DisplayName("Наименование подразделения")]

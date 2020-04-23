@@ -10,7 +10,7 @@
     @if (@Model.node != null)
     {
     <div class="partial">
-        <div class="partial-text-id">@Model.node.nodeId</div>
+        <div class="partial-text-id">@Model.node.Unit.name</div>
         <a class="btn btn-info btn-additional-style"
            asp-page="./Redirected/Detail"
            asp-route-nodeId="@Model.node.nodeId">
@@ -19,18 +19,18 @@
         <a class="btn btn-success btn-additional-style"
            asp-page="./Redirected/Detail"
            asp-route-nodeId="@Model.node.nodeId">
-            <i class="btn-text">Create</i>
+            <i class="btn-text">Add</i>
         </a>
         <a class="btn btn-warning btn-additional-style"
            asp-page="./Redirected/Detail"
            asp-route-nodeId="@Model.node.nodeId">
             <i class="btn-text">Edit</i>
         </a>
-        <a class="btn btn-danger btn-additional-style"
+        @*<a class="btn btn-danger btn-additional-style"
            asp-page="./Redirected/Detail"
            asp-route-nodeId="@Model.node.nodeId">
             <i class="btn-text">Delete</i>
-        </a>
+        </a>*@
         @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", Model.node)
     </div>
     }
