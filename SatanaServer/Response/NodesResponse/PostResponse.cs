@@ -51,7 +51,9 @@ namespace SatanaServer.Response.NodesResponse
                         var type = connection.Get<SatanaServer.Types>(node.Unit.type);
                         node.Unit.type = type.name;
 
-                        var con = connection.Insert(node.Unit, transaction);
+                        connection.Insert(node.Unit, transaction);
+                        connection.Query("Update units SET id=@id WHERE id=-1", new {id=node.Unit.id});
+
 
                         transaction.Commit();
                     }

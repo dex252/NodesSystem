@@ -8,6 +8,7 @@ namespace NodesDLL
     [Table("units")]
     public class Unit
     {
+        public int key { get; set; }
         [Key]
         public int? id { get; set; }
         [DisplayName("Тип подразделения")]
