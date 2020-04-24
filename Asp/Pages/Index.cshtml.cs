@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NodesDLL;
 
@@ -13,17 +14,18 @@ namespace AspNet
         {
             this.service = service;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
             var bonds = service.Bonds.Get();
 
-            this.node = new Node(bonds);
-            if (this.node != null)
+            if (bonds != null)
             {
+                this.node = new Node(bonds);
                 List<int?> items = new List<int?>();
                 node.MoveNode(ref items);
 
                 var names = service.Units.GetNames(items);
+                var fullNames = service.Units.GetFullNames(items);
 
                 foreach (var n in names)
                 {
@@ -35,7 +37,24 @@ namespace AspNet
                         name = n.Value
                     });
                 }
+
+                foreach (var n in fullNames)
+                {
+                    var searchNode = node.Find(n.Key);
+
+                    searchNode.Edit(new Unit()
+                    {
+                        id = n.Key,
+                        name = searchNode.Unit.name,
+                        fullname = n.Value
+                    });
+                }
+
+                return Page();
             }
+            
+            return RedirectToPage("./Error");
+            
         }
     }
 }

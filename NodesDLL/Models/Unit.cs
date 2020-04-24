@@ -12,11 +12,11 @@ namespace NodesDLL
         public int? id { get; set; }
         [DisplayName("Тип подразделения")]
         public string type { get; set; }
-        [DisplayName("Наименование подразделения")]
+        [DisplayName("Наименование подразделения"), Required, StringLength(120)]
         public string name { get; set; }
         [DisplayName("Должность руководителя")]
         public string position { get; set; }
-        [DisplayName("ФИО руководителя")]
+        [DisplayName("ФИО руководителя"), Required, StringLength(120)]
         public string fullname { get; set; }
         [DisplayName("Непосредственная подчиненность")]
         public string dependence { get; set; }

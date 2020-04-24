@@ -15,4 +15,22 @@ namespace SatanaServer.Modules
         {
         }
     }
+    public class UnitsFullNameModule : MainModule
+    {
+        public UnitsFullNameModule() : base("units/fullname", new UnitsFullName())
+        {
+        }
+    }
+    public class TypesModule : MainModule
+    {
+        public TypesModule() : base("types", new Response.Types())
+        {
+        }
+    }
+    public class NodesModule : MainModule
+    {
+        public NodesModule() : base("nodes", new Nodes())
+        {
+        }
+    }
 }

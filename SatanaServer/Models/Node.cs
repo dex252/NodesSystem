@@ -10,7 +10,7 @@ namespace SatanaServer
     public sealed class Node
     {
         [Key]
-        public int id { get; set; }
+        public int? id { get; set; }
         [DisplayName("Содержимое ноды"), NonSerialized]
         public Unit Unit { get; set; }
         [DisplayName("id ноды")]

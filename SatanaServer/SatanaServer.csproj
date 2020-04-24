@@ -106,9 +106,10 @@
     <Compile Include="Database.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Helper\Resp.cs" />
-    <Compile Include="Models\Models\Node.cs" />
-    <Compile Include="Models\Models\Types.cs" />
-    <Compile Include="Models\Models\Unit.cs" />
+    <Compile Include="Models\Bonds.cs" />
+    <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\Types.cs" />
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Modules\MainModule.cs" />
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,7 +117,13 @@
     <Compile Include="Abstract\ResponseMethod.cs" />
     <Compile Include="Response\Bonds.cs" />
     <Compile Include="Response\BondsResponse\GetResponse.cs" />
+    <Compile Include="Response\Nodes.cs" />
+    <Compile Include="Response\NodesResponse\PostResponse.cs" />
+    <Compile Include="Response\Types.cs" />
+    <Compile Include="Response\TypesResponse\GetResponse.cs" />
     <Compile Include="Response\Units.cs" />
+    <Compile Include="Response\UnitsFullName.cs" />
+    <Compile Include="Response\UnitsFullNameResponse\PostResponse.cs" />
     <Compile Include="Response\UnitsResponse\GetResponce.cs" />
     <Compile Include="Response\UnitsResponse\PostResponse.cs" />
     <Compile Include="Startup.cs" />

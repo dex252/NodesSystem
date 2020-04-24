@@ -7,7 +7,10 @@ namespace Asp
     public class DetailModel : PageModel
     {
         public INode node { get; set; }
+        public INode parent { get; set; }
         private IService service { get; }
+        [TempData]
+        public string Message { get; set; }
 
         public DetailModel(IService service)
         {
@@ -19,8 +22,6 @@ namespace Asp
 
             node = new Node {nodeId = nodeId, Unit = service.Units.Get(nodeId)};
 
-            if (node.Unit == null ) return RedirectToPage("../Error");
-                
             return Page();
         }
     }

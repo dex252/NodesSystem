@@ -9,7 +9,7 @@ namespace SatanaServer
     public class Unit
     {
         [Key]
-        public int id { get; set; }
+        public int? id { get; set; }
         [DisplayName("Тип подразделения")]
         public string type { get; set; }
         [DisplayName("Наименование подразделения")]

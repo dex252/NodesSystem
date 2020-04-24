@@ -6,14 +6,15 @@
      {
     <div class="partial">
         <div class="partial-text-id">@node.Unit.name</div>
+        <div class="partial-text-id">@node.Unit.fullname</div>
         <a class="btn btn-info btn-additional-style"
            asp-page="./Redirected/Detail"
            asp-route-nodeId="@node.nodeId">
             <i class="btn-text">Detail</i>
         </a>
         <a class="btn btn-success btn-additional-style"
-           asp-page="./Redirected/Detail"
-           asp-route-nodeId="@node.nodeId">
+           asp-page="./Redirected/Add"
+           asp-route-parentId="@node.nodeId">
             <i class="btn-text">Add</i>
         </a>
         <a class="btn btn-warning btn-additional-style"

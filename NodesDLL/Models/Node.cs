@@ -12,7 +12,7 @@ namespace NodesDLL
         [Key]
         public int id { get; set; }
         [DisplayName("Содержимое ноды")]
-        public Unit Unit { get; set; }
+        public Unit Unit { get; set; } = new Unit();
         [DisplayName("id ноды")]
         public int? nodeId { get; set; }
         [DisplayName("id родителя")]
@@ -22,7 +22,10 @@ namespace NodesDLL
         public int level { get; set; } = 0;
         [DisplayName("Дочерние ноды"), NonSerialized]
         public List<INode> nodes { get; set; } = new List<INode>();
-
+        public Node()
+        {
+            
+        }
         public Node(List<Node> bonds = null)
         {
             var root = bonds?.FirstOrDefault(e => e.parentId==null);

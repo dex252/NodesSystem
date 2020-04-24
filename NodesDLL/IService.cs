@@ -8,6 +8,8 @@ namespace NodesDLL
         string path { get; }
         Bonds<List<Node>> Bonds { get; }
         Units Units { get; }
+        Services.Types Types { get; }
+        Nodes Nodes { get; }
     }
 
     public class Service : IService
@@ -15,5 +17,7 @@ namespace NodesDLL
         public string path => "http://127.0.0.1:1235";
         public Bonds<List<Node>> Bonds => new Bonds<List<Node>>(path);
         public Units Units => new Units(path);
+        public Services.Types Types => new Services.Types(path);
+        public Nodes Nodes => new Nodes(path);
     }
 }
