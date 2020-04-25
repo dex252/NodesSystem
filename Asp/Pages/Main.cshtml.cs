@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NodesDLL;
@@ -8,7 +9,8 @@ namespace Asp
     public class MainModel : PageModel
     {
         public IService service { get; }
-        public INode node { get; set; }
+        [BindProperty]
+        public Node node { get; set; }
 
         public MainModel(IService service)
         {
@@ -55,7 +57,6 @@ namespace Asp
             }
 
             return Page();
-
         }
     }
 }
