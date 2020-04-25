@@ -1,0 +1,18 @@
+﻿@page "{groupId:int?}"
+@model Asp.DeleteTreeModel
+@{
+    ViewData["Title"] = "DeleteTree";
+}
+
+<h1>DeleteTree</h1>
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+<form method="post">
+    <div class="alert-danger">Вы уверены, что хотите удалить дерево?</div>
+    <input type="hidden" asp-for="groupId" />
+    <button type="submit" class="btn btn-danger">Да</button>
+</form>
+
+<a asp-page="../Index" class="btn btn-success">Нет</a>

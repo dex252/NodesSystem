@@ -109,6 +109,7 @@
     <Compile Include="Models\Bonds.cs" />
     <Compile Include="Models\Groups.cs" />
     <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\Tree.cs" />
     <Compile Include="Models\Types.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Modules\MainModule.cs" />
@@ -119,7 +120,9 @@
     <Compile Include="Response\Bonds.cs" />
     <Compile Include="Response\BondsResponse\GetResponse.cs" />
     <Compile Include="Response\Groups.cs" />
+    <Compile Include="Response\GroupsResponse\DeleteResponse.cs" />
     <Compile Include="Response\GroupsResponse\GetResponse.cs" />
+    <Compile Include="Response\GroupsResponse\PostResponse.cs" />
     <Compile Include="Response\Nodes.cs" />
     <Compile Include="Response\NodesResponse\DeleteResponse.cs" />
     <Compile Include="Response\NodesResponse\PostResponse.cs" />

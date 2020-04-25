@@ -10,6 +10,8 @@ namespace AspNet
     {
         private IService service { get; }
         public List<Groups> groups { get; set; }
+        [TempData]
+        public string Message { get; set; }
 
         public IndexModel(IService service)
         {

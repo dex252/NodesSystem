@@ -40,7 +40,7 @@ namespace SatanaServer.Response.NodesResponse
                     {
                         bonds.id = id;
                         bonds.nodeId = id;
-                        connection.Update(bonds);
+                        connection.Update(bonds, transaction);
 
                         node.Unit.id = (int)id;
                         node.Unit.dependence = parent.name;
@@ -49,7 +49,7 @@ namespace SatanaServer.Response.NodesResponse
                         node.id = id;
                         node.nodeId = id;
 
-                        var type = connection.Get<SatanaServer.Types>(node.Unit.type);
+                        var type = connection.Get<SatanaServer.Types>(node.Unit.type, transaction);
                         node.Unit.type = type.name;
 
                         connection.Insert(node.Unit, transaction);

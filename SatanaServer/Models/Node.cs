@@ -23,7 +23,7 @@ namespace SatanaServer
         [DisplayName("Дочерние ноды"), NonSerialized]
         public List<Node> nodes { get; set; } = new List<Node>();
 
-        public int groupId { get; set; }
+        public int? groupId { get; set; }
     }
     [AttributeUsage(System.AttributeTargets.Property, Inherited = false)]
     [System.Runtime.InteropServices.ComVisible(true)]

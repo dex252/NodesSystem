@@ -8,7 +8,7 @@ namespace SatanaServer.Models
     public class Groups
     {
         [Key]
-        public int id { get; set; }
+        public int? id { get; set; }
         public string name { get; set; }
         public DateTime date { get; set; }
     }
