@@ -22,6 +22,8 @@ namespace NodesDLL
         public int level { get; set; } = 0;
         [DisplayName("Дочерние ноды"), NonSerialized]
         public List<INode> nodes { get; set; } = new List<INode>();
+        [DisplayName("Группа ноды")]
+        public int? groupId { get; set; }
         public Node()
         {
             

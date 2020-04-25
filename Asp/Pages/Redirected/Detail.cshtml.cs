@@ -16,11 +16,16 @@ namespace Asp
         {
             this.service = service;
         }
-        public IActionResult OnGet(int? nodeId)
+        public IActionResult OnGet(int? nodeId, int? groupId)
         {
             if (!nodeId.HasValue) return RedirectToPage("../Error");
 
-            node = new Node {nodeId = nodeId, Unit = service.Units.Get(nodeId)};
+            node = new Node {
+                nodeId = nodeId, 
+                groupId = groupId,
+                Unit = service.Units.Get(nodeId)
+
+            };
 
             return Page();
         }

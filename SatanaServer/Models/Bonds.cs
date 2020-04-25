@@ -10,5 +10,6 @@ namespace SatanaServer.Models
         public int? id { get; set; }
         public int? nodeId { get; set; }
         public int? parentId { get; set; }
+        public int groupId { get; set; }
     }
 }

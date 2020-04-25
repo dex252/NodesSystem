@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NodesDLL;
+using NodesDLL.Models;
 
 namespace AspNet
 {
     public class IndexModel : PageModel
     {
-        public IService service { get; }
-        public INode node { get; set; }
+        private IService service { get; }
+        public List<Groups> groups { get; set; }
 
         public IndexModel(IService service)
         {
@@ -16,45 +17,9 @@ namespace AspNet
         }
         public IActionResult OnGet()
         {
-            var bonds = service.Bonds.Get();
+            groups = service.Groups.Get();
 
-            if (bonds != null)
-            {
-                this.node = new Node(bonds);
-                List<int?> items = new List<int?>();
-                node.MoveNode(ref items);
-
-                var names = service.Units.GetNames(items);
-                var fullNames = service.Units.GetFullNames(items);
-
-                foreach (var n in names)
-                {
-                    var searchNode = node.Find(n.Key);
-                   
-                    searchNode.Edit(new Unit()
-                    {
-                        id = n.Key,
-                        name = n.Value
-                    });
-                }
-
-                foreach (var n in fullNames)
-                {
-                    var searchNode = node.Find(n.Key);
-
-                    searchNode.Edit(new Unit()
-                    {
-                        id = n.Key,
-                        name = searchNode.Unit.name,
-                        fullname = n.Value
-                    });
-                }
-
-                return Page();
-            }
-            
-            return RedirectToPage("./Error");
-            
+            return Page();
         }
     }
 }

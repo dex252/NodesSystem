@@ -33,4 +33,11 @@ namespace SatanaServer.Modules
         {
         }
     }
+
+    public class GroupsModule : MainModule
+    {
+        public GroupsModule() : base("groups", new Groups())
+        {
+        }
+    }
 }

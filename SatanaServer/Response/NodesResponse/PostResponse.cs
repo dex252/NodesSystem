@@ -21,7 +21,8 @@ namespace SatanaServer.Response.NodesResponse
 
             var bonds = new Models.Bonds()
             {
-                parentId = node.parentId
+                parentId = node.parentId,
+                groupId = node.groupId
             };
 
             int? id = null;
@@ -52,8 +53,6 @@ namespace SatanaServer.Response.NodesResponse
                         node.Unit.type = type.name;
 
                         connection.Insert(node.Unit, transaction);
-                        connection.Query("Update units SET id=@id WHERE id=-1", new {id=node.Unit.id});
-
 
                         transaction.Commit();
                     }

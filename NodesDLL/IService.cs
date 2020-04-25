@@ -10,6 +10,7 @@ namespace NodesDLL
         Units Units { get; }
         Services.Types Types { get; }
         Nodes Nodes { get; }
+        Services.Groups Groups { get; }
     }
 
     public class Service : IService
@@ -19,5 +20,6 @@ namespace NodesDLL
         public Units Units => new Units(path);
         public Services.Types Types => new Services.Types(path);
         public Nodes Nodes => new Nodes(path);
+        public Services.Groups Groups => new Services.Groups(path);
     }
 }

@@ -1,4 +1,4 @@
-﻿@page "{NodeId:int?}"
+﻿@page "{groupId:int?}/{nodeId:int?}"
 @model Asp.DetailModel
 @{
     ViewData["Title"] = "Detail";
@@ -17,5 +17,6 @@
 <div>@Html.LabelFor(e => e.node.Unit.curatorial_position): @Model.node.Unit.curatorial_position</div>
 <div>@Html.LabelFor(e => e.node.Unit.curatorial_fullname): @Model.node.Unit.curatorial_fullname</div>
 
-<a asp-page="../Index" class="btn btn-dark">Return to tree</a>
+<a asp-page="../Main" class="btn btn-dark"
+   asp-route-groupId="@Model.node.groupId">Return to tree</a>
 

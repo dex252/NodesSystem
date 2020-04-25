@@ -10,7 +10,6 @@ namespace SatanaServer
     public sealed class Node
     {
         [Key]
-        public int key { get; set; }
         public int? id { get; set; }
         [DisplayName("Содержимое ноды"), NonSerialized]
         public Unit Unit { get; set; }
@@ -23,6 +22,8 @@ namespace SatanaServer
         public int level { get; set; } = 0;
         [DisplayName("Дочерние ноды"), NonSerialized]
         public List<Node> nodes { get; set; } = new List<Node>();
+
+        public int groupId { get; set; }
     }
     [AttributeUsage(System.AttributeTargets.Property, Inherited = false)]
     [System.Runtime.InteropServices.ComVisible(true)]

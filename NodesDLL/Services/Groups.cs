@@ -1,19 +1,20 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
 
 namespace NodesDLL.Services
 {
-    public class Bonds<T>
+    public class Groups
     {
         private string path;
-        private string resources = "bonds";
-        public Bonds(string path)
+        private string resources = "groups";
+        public Groups(string path)
         {
             this.path = path;
         }
 
-        public T Get(int? groupId)
+        public List<Models.Groups> Get()
         {
             RestClient client = new RestClient(path)
             {
@@ -30,16 +31,15 @@ namespace NodesDLL.Services
                 RequestFormat = DataFormat.Json
             };
 
-            request.Resource += "?groupId=" + groupId;
             var response = client.Execute(request);
 
             if (!response.IsSuccessful)
             {
-                return default(T);
+                return null;
             }
 
-            var bonds = JsonConvert.DeserializeObject<T>(response.Content);
-            return bonds;
+            var groups = JsonConvert.DeserializeObject<List<Models.Groups>>(response.Content);
+            return groups;
         }
     }
 }

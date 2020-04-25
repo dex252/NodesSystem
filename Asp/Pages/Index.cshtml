@@ -1,38 +1,36 @@
 ﻿@page
 @model AspNet.IndexModel
 @{
-    ViewData["Title"] = "Nodes";
+    ViewData["Title"] = "Menu";
 }
 
-<h1>Nodes</h1>
-
-<form method="get">
-    @if (@Model.node != null)
-    {
-        <div class="partial">
-            <div class="partial-text-id">@Model.node.Unit.name</div>
-            <div class="partial-text-id">@Model.node.Unit.fullname</div>
-            <a class="btn btn-info btn-additional-style"
-               asp-page="./Redirected/Detail"
-               asp-route-nodeId="@Model.node.nodeId">
-                <i class="btn-text">Detail</i>
-            </a>
-            <a class="btn btn-success btn-additional-style"
-               asp-page="./Redirected/Add"
-               asp-route-parentId="@Model.node.nodeId">
-                <i class="btn-text">Add</i>
-            </a>
-            <a class="btn btn-warning btn-additional-style"
-               asp-page="./Redirected/Detail"
-               asp-route-nodeId="@Model.node.nodeId">
-                <i class="btn-text">Edit</i>
-            </a>
-            @*<a class="btn btn-danger btn-additional-style"
-                   asp-page="./Redirected/Detail"
-                   asp-route-nodeId="@Model.node.nodeId">
-                    <i class="btn-text">Delete</i>
-                </a>*@
-            @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", Model.node)
-        </div>
-    }
+<h1>Menu</h1>
+<form>
+    <div class="card-group">
+        <a asp-page="./Main" class="btn btn-success">Add new tree</a>
+    </div>
+    <h4>Tree List:</h4>
+    <table class="table">
+        @foreach (var g in Model.groups)
+        {
+        <tr>
+            <td>@g.name</td>
+            <td>@g.date</td>
+            <td>
+                <a class="btn btn-sm btn-success"
+                   asp-page="./Main"
+                   asp-route-groupId="@g.id">
+                    View tree
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-sm btn-danger"
+                   asp-page="./Delete Tree"
+                   asp-route-groupId="@g.id">
+                    DeleteTree
+                </a>
+            </td>
+        </tr>
+        }
+    </table>
 </form>

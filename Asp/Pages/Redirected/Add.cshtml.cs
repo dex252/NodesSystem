@@ -25,11 +25,11 @@ namespace Asp
             this.types = service.Types.Get();
             this.node = new Node();
         }
-        public IActionResult OnGet(int parentId)
+        public IActionResult OnGet(int parentId, int? groupId)
         {
             this.node.parentId = parentId;
             this.node.Unit.date_create = DateTime.Today;
-
+            this.node.groupId = groupId;
             ViewData["Types"] = types
                 .Select(n => new SelectListItem
                 {
@@ -59,12 +59,12 @@ namespace Asp
             if (newId == null)
             {
                 TempData["Message"] = "Ошибка при создании узла";
-                return RedirectToPage("./Add", new {parentId = node.parentId});
+                return RedirectToPage("./Add", new {parentId = node.parentId, groupId= node.groupId});
             }
 
             node.nodeId = newId;
             TempData["Message"] = "Узел создан успешно!";
-            return RedirectToPage("./Detail", new { nodeId = node.nodeId });
+            return RedirectToPage("./Detail", new { nodeId = node.nodeId, groupId = node.groupId });
         }
     }
 }

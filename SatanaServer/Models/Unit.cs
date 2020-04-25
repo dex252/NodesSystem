@@ -1,14 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Dapper;
 
 namespace SatanaServer
 {
-    [Table("units")]
+    [System.ComponentModel.DataAnnotations.Schema.Table("units")]
     public class Unit
     {
-        [Key]
+        [System.ComponentModel.DataAnnotations.Key, Required]
         public int? id { get; set; }
         [DisplayName("Тип подразделения")]
         public string type { get; set; }

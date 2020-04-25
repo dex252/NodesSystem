@@ -19,6 +19,8 @@ namespace NodesDLL
         int level { get; set; }
         [DisplayName("Дочерние ноды"), NonSerialized]
         List<INode> nodes { get; set; }
+        [DisplayName("Группа ноды")]
+        int? groupId { get; set; }
 
         /// <summary>
         /// Добавить ноду в список (вернет false, если такая нода с таким id уже существует в коллекции этой ноды).
