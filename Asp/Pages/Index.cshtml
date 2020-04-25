@@ -6,31 +6,40 @@
 
 <h1>Menu</h1>
 <form>
-    <div class="card-group">
-        <a asp-page="./Main" class="btn btn-success">Add new tree</a>
-    </div>
-    <h4>Tree List:</h4>
-    <table class="table">
-        @foreach (var g in Model.groups)
-        {
-        <tr>
-            <td>@g.name</td>
-            <td>@g.date</td>
-            <td>
-                <a class="btn btn-sm btn-success"
-                   asp-page="./Main"
-                   asp-route-groupId="@g.id">
-                    View tree
-                </a>
-            </td>
-            <td>
-                <a class="btn btn-sm btn-danger"
-                   asp-page="./Delete Tree"
-                   asp-route-groupId="@g.id">
-                    DeleteTree
-                </a>
-            </td>
-        </tr>
-        }
-    </table>
+
+    @if (Model.groups != null)
+    {
+        <div class="card-group">
+            <a asp-page="./Main" class="btn btn-success">Add new tree</a>
+        </div>
+        <h4>Tree List:</h4>
+        <table class="table">
+            @foreach (var g in Model.groups)
+            {
+                <tr>
+                    <td>@g.name</td>
+                    <td>@g.date</td>
+                    <td>
+                        <a class="btn btn-sm btn-success"
+                           asp-page="./Main"
+                           asp-route-groupId="@g.id">
+                            View tree
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-danger"
+                           asp-page="./Delete Tree"
+                           asp-route-groupId="@g.id">
+                            DeleteTree
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="alert-danger"> Ошибка соединения</div>
+    }
+
 </form>

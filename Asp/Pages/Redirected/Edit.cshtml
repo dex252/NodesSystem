@@ -6,3 +6,35 @@
 
 <h1>Edit</h1>
 
+<form method="post">
+    <input type="hidden" asp-for="node.nodeId" />
+    <input type="hidden" asp-for="node.groupId" />
+    <div class="form-group">
+        <label asp-for="node.Unit.name"></label>
+        <input asp-for="node.Unit.name" class="form-control" />
+        <span class="text-danger" asp-validation-for="node.Unit.name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="node.Unit.fullname"></label>
+        <input asp-for="node.Unit.fullname" class="form-control" />
+        <span class="text-danger" asp-validation-for="node.Unit.fullname"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="node.Unit.type"></label>
+        <select class="form-control"
+                asp-for="node.Unit.type"
+                asp-items=@((List<SelectListItem>) ViewData["Types"])>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="node.Unit.date_create"></label>
+        <input asp-for="node.Unit.date_create" class="form-control" />
+    </div>
+    <input type="hidden" asp-for="node.Unit.id" />
+    <input type="hidden" asp-for="node.Unit.dependence" />
+    <input type="hidden" asp-for="node.Unit.curatorial_fullname" />   
+    <input type="hidden" asp-for="node.Unit.curatorial_position" />
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<a asp-page="../Main" class="btn btn-dark"
+   asp-route-groupId="@Model.node.groupId">Return to tree</a>

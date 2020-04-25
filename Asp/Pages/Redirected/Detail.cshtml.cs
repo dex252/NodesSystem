@@ -7,7 +7,6 @@ namespace Asp
     public class DetailModel : PageModel
     {
         public INode node { get; set; }
-        public INode parent { get; set; }
         private IService service { get; }
         [TempData]
         public string Message { get; set; }
@@ -18,7 +17,7 @@ namespace Asp
         }
         public IActionResult OnGet(int? nodeId, int? groupId)
         {
-            if (!nodeId.HasValue) return RedirectToPage("../Error");
+            if (!nodeId.HasValue || !groupId.HasValue) return RedirectToPage("../Error");
 
             node = new Node {
                 nodeId = nodeId, 
