@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -62,6 +60,34 @@ namespace NodesDLL.Services
             };
             request.AddJsonBody(node);
 
+            var response = client.Execute(request);
+
+            if (!response.IsSuccessful)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Delete(int? nodeId)
+        {
+            RestClient client = new RestClient(path)
+            {
+                Encoding = new UTF8Encoding(false)
+            };
+
+            client.AddDefaultHeader("Accept", "application/json");
+            client.AddDefaultHeader("Accept-Encoding", "gzip, deflate");
+            client.AddDefaultHeader("Content-Type", "application/json");
+
+            var request = new RestSharp.RestRequest(resources)
+            {
+                Method = Method.DELETE,
+                RequestFormat = DataFormat.Json
+            };
+
+            request.Resource += "?groupId=" + nodeId;
             var response = client.Execute(request);
 
             if (!response.IsSuccessful)

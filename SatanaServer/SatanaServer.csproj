@@ -121,6 +121,7 @@
     <Compile Include="Response\Groups.cs" />
     <Compile Include="Response\GroupsResponse\GetResponse.cs" />
     <Compile Include="Response\Nodes.cs" />
+    <Compile Include="Response\NodesResponse\DeleteResponse.cs" />
     <Compile Include="Response\NodesResponse\PostResponse.cs" />
     <Compile Include="Response\NodesResponse\PutResponse.cs" />
     <Compile Include="Response\Types.cs" />

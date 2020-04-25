@@ -15,9 +15,6 @@ namespace SatanaServer.Response
             throw new NotImplementedException();
         }
 
-        public override Nancy.Response Delete(Request request, Database db)
-        {
-            throw new NotImplementedException();
-        }
+        public override Nancy.Response Delete(Request request, Database db)=> new DeleteResponse(db).Method(request);
     }
 }
