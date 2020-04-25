@@ -19,6 +19,7 @@
 <div>@Html.LabelFor(e => e.node.Unit.curatorial_fullname): @Model.node.Unit.curatorial_fullname</div>
 <form method="post">
     <input type="hidden" asp-for="node.nodeId" />
+    <input type="hidden" asp-for="node.groupId" />
     <button type="submit" class="btn btn-danger">Delete</button>
 </form>
 <a asp-page="../Main" class="btn btn-dark"

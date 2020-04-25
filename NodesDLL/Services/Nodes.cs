@@ -87,7 +87,7 @@ namespace NodesDLL.Services
                 RequestFormat = DataFormat.Json
             };
 
-            request.Resource += "?groupId=" + nodeId;
+            request.Resource += "?nodeId=" + nodeId;
             var response = client.Execute(request);
 
             if (!response.IsSuccessful)
