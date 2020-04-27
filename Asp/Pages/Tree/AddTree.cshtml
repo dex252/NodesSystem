@@ -29,6 +29,11 @@
         <span class="text-danger" asp-validation-for="node.Unit.fullname"></span>
     </div>
     <div class="form-group">
+        <label asp-for="node.Unit.position"></label>
+        <input asp-for="node.Unit.position" class="form-control" />
+        <span class="text-danger" asp-validation-for="node.Unit.position"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="node.Unit.type"></label>
         <select class="form-control"
                 asp-for="node.Unit.type"

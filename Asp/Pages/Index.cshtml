@@ -5,14 +5,19 @@
 }
 
 <h1>Menu</h1>
+
+<div class="card-group">
+    <a asp-page="./Tree/ShowJsonTree" class="btn btn-warning">Show save tree in JSON format</a>
+</div>
+
 <form>
 
     @if (Model.groups != null)
     {
         @if (Model.Message != null)
-         {
-             <div class="alert alert-info">@Model.Message</div>
-         }
+        {
+            <div class="alert alert-info">@Model.Message</div>
+        }
         <div class="card-group">
             <a asp-page="./Tree/AddTree" class="btn btn-success">Add new tree</a>
         </div>

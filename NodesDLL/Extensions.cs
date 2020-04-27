@@ -8,7 +8,7 @@
         /// <param name="node"></param>
         /// <param name="nodeId"></param>
         /// <returns></returns>
-        public static INode Find(this INode node, int? nodeId)
+        public static Node Find(this Node node, int? nodeId)
         {
             if (node.nodeId == nodeId) return node;
 

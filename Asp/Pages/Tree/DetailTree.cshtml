@@ -1,0 +1,32 @@
+﻿@page "{groupId:int?}/{nodeId:int?}"
+@model Asp.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Просмотр узла</h1>
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+@if (@Model.node != null)
+    {
+        <div>@Html.LabelFor(e => e.node.Unit.type): @Model.node.Unit.type</div>
+        <div>@Html.LabelFor(e => e.node.Unit.name): @Model.node.Unit.name</div>
+        <div>@Html.LabelFor(e => e.node.Unit.position): @Model.node.Unit.position</div>
+        <div>@Html.LabelFor(e => e.node.Unit.fullname): @Model.node.Unit.fullname</div>
+        <div>@Html.LabelFor(e => e.node.Unit.date_create): @Model.node.Unit.date_create</div>
+        <div>@Html.LabelFor(e => e.node.Unit.dependence): @Model.node.Unit.dependence</div>
+        <div>@Html.LabelFor(e => e.node.Unit.curatorial_position): @Model.node.Unit.curatorial_position</div>
+        <div>@Html.LabelFor(e => e.node.Unit.curatorial_fullname): @Model.node.Unit.curatorial_fullname</div>
+    }
+
+
+<a class="btn btn-info btn-additional-style"
+   asp-page="./ShowJsonTree">
+    <i class="btn-text">Назад</i>
+</a>
+
+
+
+

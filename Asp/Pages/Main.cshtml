@@ -7,11 +7,17 @@
 <h1>Nodes</h1>
 
 <a asp-page="./Index" class="btn btn-primary">Return to menu</a>
-<form method="get">
-    @if (@Model.node != null)
-    {
+
+@if (@Model.node != null)
+{<form method="post">
+        <button type="submit" class="btn btn-primary">Save JSON&Pdf</button>
+    </form>
+
+    <form method="get">
+
         <div class="partial">
             <div class="partial-text-id">@Model.node.Unit.name</div>
+            <div class="partial-text-id">@Model.node.Unit.position</div>
             <div class="partial-text-id">@Model.node.Unit.fullname</div>
             <a class="btn btn-info btn-additional-style"
                asp-page="./Redirected/Detail"
@@ -21,7 +27,7 @@
             </a>
             <a class="btn btn-success btn-additional-style"
                asp-page="./Redirected/Add"
-               asp-route-parentId="@Model.node.nodeId" 
+               asp-route-parentId="@Model.node.nodeId"
                asp-route-groupId="@Model.node.groupId">
                 <i class="btn-text">Add</i>
             </a>
@@ -33,6 +39,7 @@
             </a>
             @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", Model.node)
         </div>
-    }
-</form>
+
+    </form>
+}
 

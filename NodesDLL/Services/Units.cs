@@ -10,6 +10,7 @@ namespace NodesDLL.Services
         private string path;
         private string resources = "units";
         private string resourcesFullName = "units/fullname";
+        private string resourcesPosition = "units/position";
         public Units(string path)
         {
             this.path = path;
@@ -27,6 +28,35 @@ namespace NodesDLL.Services
             client.AddDefaultHeader("Content-Type", "application/json");
 
             var request = new RestSharp.RestRequest(resources)
+            {
+                Method = Method.POST,
+                RequestFormat = DataFormat.Json
+            };
+            request.AddJsonBody(items);
+
+            var response = client.Execute(request);
+
+            if (!response.IsSuccessful)
+            {
+                return null;
+            }
+
+            var dictionary = JsonConvert.DeserializeObject<Dictionary<int?, string>>(response.Content);
+            return dictionary;
+        }
+
+        public Dictionary<int?, string> GetPositions(List<int?> items)
+        {
+            RestClient client = new RestClient(path)
+            {
+                Encoding = new UTF8Encoding(false)
+            };
+
+            client.AddDefaultHeader("Accept", "application/json");
+            client.AddDefaultHeader("Accept-Encoding", "gzip, deflate");
+            client.AddDefaultHeader("Content-Type", "application/json");
+
+            var request = new RestSharp.RestRequest(resourcesPosition)
             {
                 Method = Method.POST,
                 RequestFormat = DataFormat.Json

@@ -15,7 +15,7 @@ namespace NodesDLL
         public string type { get; set; }
         [DisplayName("Наименование подразделения"), Required, StringLength(120)]
         public string name { get; set; }
-        [DisplayName("Должность руководителя")]
+        [DisplayName("Должность руководителя"), Required, StringLength(120)]
         public string position { get; set; }
         [DisplayName("ФИО руководителя"), Required, StringLength(120)]
         public string fullname { get; set; }

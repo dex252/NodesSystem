@@ -21,7 +21,7 @@ namespace NodesDLL
         [DisplayName("Уровень вложенности узла")]
         public int level { get; set; } = 0;
         [DisplayName("Дочерние ноды"), NonSerialized]
-        public List<INode> nodes { get; set; } = new List<INode>();
+        public List<Node> nodes { get; set; } = new List<Node>();
         [DisplayName("Группа ноды")]
         public int? groupId { get; set; }
         public Node()
@@ -45,7 +45,7 @@ namespace NodesDLL
         /// </summary>
         /// <param name="bonds"></param>
         /// <param name="parent"></param>
-        public void BondsFill(List<Node> bonds, INode parent)
+        public void BondsFill(List<Node> bonds, Node parent)
         {
             List<Node> childs = new List<Node>();
             foreach (var b in bonds)
@@ -79,7 +79,7 @@ namespace NodesDLL
         /// Корректно заполняет уровни вложенности только при одиночном добавлении узлов, в остальных случаях воспользуйтесь методом RefreshLevels.
         /// </summary>
         /// <param name="node"></param>
-        public bool Add(INode node)
+        public bool Add(Node node)
         {
             var item = nodes.FirstOrDefault(e => e.nodeId == node.nodeId);
 

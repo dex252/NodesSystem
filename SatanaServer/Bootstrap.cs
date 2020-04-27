@@ -28,7 +28,11 @@ namespace SatanaServer
                 context.GetDb()?.CloseDatabase();
             });
 
-            pipelines.OnError += (ctx, e) => null;
+            pipelines.OnError += (ctx, e) =>
+            {
+                App.log.Error($"{e.Message}\r\n{e.StackTrace}");
+                return null;
+            };
 
         }
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)

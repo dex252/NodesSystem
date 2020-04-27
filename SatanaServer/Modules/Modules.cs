@@ -21,6 +21,12 @@ namespace SatanaServer.Modules
         {
         }
     }
+    public class UnitsPositionModule : MainModule
+    {
+        public UnitsPositionModule() : base("units/position", new UnitsPosition())
+        {
+        }
+    }
     public class TypesModule : MainModule
     {
         public TypesModule() : base("types", new Response.Types())

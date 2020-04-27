@@ -21,6 +21,7 @@ namespace Asp
         {
             services.AddSingleton<IService, Service>();
             services.AddSingleton<INode, Node>();
+            services.AddSingleton<IController, Controller>();
             services.AddRazorPages();
         }
 

@@ -69,6 +69,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="NodesDLL">
       <HintPath>..\NodesDLL\bin\Debug\netcoreapp3.1\NodesDLL.dll</HintPath>
     </Reference>
@@ -86,8 +89,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -132,12 +138,20 @@
     <Compile Include="Response\Units.cs" />
     <Compile Include="Response\UnitsFullName.cs" />
     <Compile Include="Response\UnitsFullNameResponse\PostResponse.cs" />
+    <Compile Include="Response\UnitsPosition.cs" />
+    <Compile Include="Response\UnitsPositionResponse\PostResponse.cs" />
     <Compile Include="Response\UnitsResponse\GetResponce.cs" />
     <Compile Include="Response\UnitsResponse\PostResponse.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -67,6 +67,7 @@ namespace SatanaServer.Module
 
         private Nancy.Response SendMySqlException(MySqlException e)
         {
+            App.log.Error($"{e.Message}\r\n{e.StackTrace}");
             switch (e.Number)
             {
                 case 1062:

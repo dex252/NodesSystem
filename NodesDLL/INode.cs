@@ -18,7 +18,7 @@ namespace NodesDLL
         [DisplayName("Уровень вложенности узла")]
         int level { get; set; }
         [DisplayName("Дочерние ноды"), NonSerialized]
-        List<INode> nodes { get; set; }
+        List<Node> nodes { get; set; }
         [DisplayName("Группа ноды")]
         int? groupId { get; set; }
 
@@ -27,7 +27,7 @@ namespace NodesDLL
         /// Корректно заполняет уровни вложенности только при одиночном добавлении узлов, в остальных случаях воспользуйтесь методом RefreshLevels.
         /// </summary>
         /// <param name="node"></param>
-        bool Add(INode node);
+        bool Add(Node node);
         /// <summary>
         /// Редактировать Unit, присвоить node новый nodeId, всем дочерним нодам новый parentId.
         /// Осторожно! Нужно убедиться, что редактируемый id не содержится в коллекции нод.

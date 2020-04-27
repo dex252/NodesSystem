@@ -44,7 +44,7 @@ namespace SatanaServer.Response.NodesResponse
 
                         node.Unit.id = (int)id;
                         node.Unit.dependence = parent.name;
-                        node.Unit.curatorial_position = parent.type;
+                        node.Unit.curatorial_position = parent.position;
                         node.Unit.curatorial_fullname = parent.fullname;
                         node.id = id;
                         node.nodeId = id;

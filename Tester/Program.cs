@@ -11,7 +11,7 @@ namespace Tester
             static void Main(string[] args)
             {
                 //  Создание нод
-                INode node = new NodeCreate().CreateNodes();
+                Node node = new NodeCreate().CreateNodes();
                 Console.WriteLine(node);
 
                 //Обновление уровней вложенности
