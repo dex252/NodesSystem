@@ -1,0 +1,27 @@
+﻿@page "{groupId:int?}/{nodeId:int?}"
+@model Asp.ConnectionModel
+@{
+    ViewData["Title"] = "Connection";
+}
+
+<h1>Connection</h1>
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+<div class="alert-info">Пожалуйста выберите дерево из списка для присоединения к узлу</div>
+
+<form method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for="groupId" />
+        <input type="hidden" asp-for="nodeId" />
+        <label asp-for="connectionTree"></label>
+        <select class="form-control"
+                asp-for="connectionTree"
+                asp-items=@((List<SelectListItem>) ViewData["Connections"])>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">ОК</button>
+</form>
+<a asp-page="../Main" class="btn btn-dark"
+   asp-route-groupId="@Model.groupId">Return to tree</a>

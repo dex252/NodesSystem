@@ -32,6 +32,12 @@
            asp-route-groupId="@node.groupId">
             <i class="btn-text">Delete</i>
         </a>
+        <a class="btn btn-secondary btn-additional-style"
+           asp-page="./Redirected/Connection"
+           asp-route-nodeId="@node.nodeId"
+           asp-route-groupId="@node.groupId">
+            <i class="btn-text">Connection</i>
+        </a>
         @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", node)
     </div>
      }

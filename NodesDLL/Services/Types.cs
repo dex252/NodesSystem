@@ -14,7 +14,7 @@ namespace NodesDLL.Services
             this.path = path;
         }
 
-        public List<NodesDLL.Types> Get()
+        public List<NodesDLL.Groups> Get()
         {
             RestClient client = new RestClient(path)
             {
@@ -38,7 +38,7 @@ namespace NodesDLL.Services
                 return null;
             }
 
-            var types = JsonConvert.DeserializeObject<List<NodesDLL.Types>>(response.Content);
+            var types = JsonConvert.DeserializeObject<List<NodesDLL.Groups>>(response.Content);
             return types;
         }
     }

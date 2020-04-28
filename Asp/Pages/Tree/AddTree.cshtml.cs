@@ -18,15 +18,15 @@ namespace Asp
         [BindProperty]
         public Node node { get; set; }
         [BindProperty]
-        public Groups group { get; set; }
-        public List<NodesDLL.Types> types { get; set; }
+        public NodesDLL.Models.Groups group { get; set; }
+        public List<NodesDLL.Groups> types { get; set; }
         public AddTreeModel(IService service, IHtmlHelper htmlHelper)
         {
             this.htmlHelper = htmlHelper;
             this.service = service;
             this.types = service.Types.Get();
             this.node = new Node();
-            this.group = new Groups()
+            this.group = new NodesDLL.Models.Groups()
             {
                 date = DateTime.Today
             };

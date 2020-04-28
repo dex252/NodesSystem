@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Newtonsoft.Json;
+using NodesDLL.Models;
 using RestSharp;
 
 namespace NodesDLL.Services

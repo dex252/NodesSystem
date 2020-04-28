@@ -1,11 +1,12 @@
 ﻿using System.Data;
+using System.Linq;
 using Dapper;
 using MySql.Data.MySqlClient;
 using Nancy;
 using Nancy.Extensions;
 using SatanaServer.Helper;
 
-namespace SatanaServer.Response.GroupsResponse
+namespace SatanaServer.Response.BondsResponse
 {
     class PutResponse : ResponseMethod
     {
@@ -17,15 +18,24 @@ namespace SatanaServer.Response.GroupsResponse
         {
             var body = request.Body.AsString();
 
+            // Здесь нода - присоединяемая нода, в группе - id ноды к которой присоединяем дерево
             var tree = Newtonsoft.Json.JsonConvert.DeserializeObject<Tree>(body);
 
             using (var connection = db.Db)
             using (var transaction = connection.BeginTransaction(IsolationLevel.RepeatableRead))
             {
-                int? id = connection.Insert(tree.group, transaction);
+                int? connectionId = tree.group.id; // присоединяемая нода
+                Node node = tree.node; // нода, к которой коннектимся
 
-                Move(tree.node, connection, transaction, null, id);
-                
+                //получим id группы к которой присоединяем дерево
+                var connNode = connection.Get<Models.Bonds>(connectionId, transaction);
+                var newGroup = connNode.groupId;
+                var newParentId = connNode.nodeId;
+
+               // var node = bondsList.First(e => e.parentId == null);
+                //var nodeId = node.id;
+                Move(tree.node, connection, transaction, newParentId, newGroup);
+
                 transaction.Commit();
             }
 

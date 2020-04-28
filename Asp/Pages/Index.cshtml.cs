@@ -9,7 +9,7 @@ namespace AspNet
     public class IndexModel : PageModel
     {
         private IService service { get; }
-        public List<Groups> groups { get; set; }
+        public List<NodesDLL.Models.Groups> groups { get; set; }
         [TempData]
         public string Message { get; set; }
 

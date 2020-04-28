@@ -8,6 +8,7 @@
 
 <a asp-page="./Index" class="btn btn-primary">Return to menu</a>
 
+
 @if (@Model.node != null)
 {
     <form method="post">
@@ -38,6 +39,12 @@
                asp-route-nodeId="@Model.node.nodeId"
                asp-route-groupId="@Model.node.groupId">
                 <i class="btn-text">Edit</i>
+            </a>
+            <a class="btn btn-secondary btn-additional-style"
+               asp-page="./Redirected/Connection"
+               asp-route-nodeId="@Model.node.nodeId"
+               asp-route-groupId="@Model.node.groupId">
+                <i class="btn-text">Connection</i>
             </a>
             @await Html.PartialAsync(@"~/Pages/_Partial.cshtml", Model.node)
         </div>

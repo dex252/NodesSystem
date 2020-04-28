@@ -15,7 +15,7 @@ namespace Asp
         public Node node { get; set; }
         private IService service { get; }
         public IHtmlHelper htmlHelper { get; }
-        public List<NodesDLL.Types> types { get; set; }
+        public List<NodesDLL.Groups> types { get; set; }
         public DeleteModel(IService service, IHtmlHelper htmlHelper)
         {
             this.htmlHelper = htmlHelper;

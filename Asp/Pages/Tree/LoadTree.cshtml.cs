@@ -15,7 +15,7 @@ namespace Asp
         [BindProperty]
         public Node node { get; set; }
         [BindProperty]
-        public Groups group { get; set; }
+        public NodesDLL.Models.Groups group { get; set; }
 
         public LoadTreeModel(IService service, IController controller)
         {
@@ -33,7 +33,7 @@ namespace Asp
                     NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
                 });
 
-                group = new Groups()
+                group = new NodesDLL.Models.Groups()
                 {
                     date = DateTime.Now
                 };

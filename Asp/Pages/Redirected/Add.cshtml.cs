@@ -16,7 +16,7 @@ namespace Asp
         public string Message { get; set; }
         [BindProperty]
         public Node node { get; set; }
-        public List<NodesDLL.Types> types { get; set; }
+        public List<NodesDLL.Groups> types { get; set; }
       
         public AddModel(IService service, IHtmlHelper htmlHelper)
         {

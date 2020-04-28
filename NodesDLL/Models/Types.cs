@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace NodesDLL
 {
     [Table("types")]
-    public class Types
+    public class Groups
     {
         [Key]
         public int id { get; set; }
