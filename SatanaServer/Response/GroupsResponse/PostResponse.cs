@@ -22,7 +22,6 @@ namespace SatanaServer.Response.GroupsResponse
             using (var transaction = connection.BeginTransaction(IsolationLevel.Serializable))
             {
                 int? id = connection.Insert(tree.group, transaction);
-                tree.node.Unit.id = id;
 
                 var type = connection.Get<SatanaServer.Types>(tree.node.Unit.type, transaction);
                 tree.node.Unit.type = type.name;

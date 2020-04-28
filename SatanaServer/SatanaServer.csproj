@@ -129,6 +129,7 @@
     <Compile Include="Response\GroupsResponse\DeleteResponse.cs" />
     <Compile Include="Response\GroupsResponse\GetResponse.cs" />
     <Compile Include="Response\GroupsResponse\PostResponse.cs" />
+    <Compile Include="Response\GroupsResponse\PutResponse.cs" />
     <Compile Include="Response\Nodes.cs" />
     <Compile Include="Response\NodesResponse\DeleteResponse.cs" />
     <Compile Include="Response\NodesResponse\PostResponse.cs" />

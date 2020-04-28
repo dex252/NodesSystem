@@ -10,26 +10,24 @@ namespace Asp
         private IService service { get; }
         public IController controller { get; }
 
-        [TempData]
-        public string Message { get; set; }
-
         public DetailTreeModel(IService service, IController controller)
         {
             this.service = service;
             this.controller = controller;
         }
-        public IActionResult OnGet(int? nodeId, int? groupId)
+        public IActionResult OnGet(int? nodeId)
         {
-            if (!nodeId.HasValue || !groupId.HasValue) return RedirectToPage("../Error");
-
-            node = new Node {
-                nodeId = nodeId, 
-                groupId = groupId,
-                Unit = service.Units.Get(nodeId)
-
-            };
+            
+            if (!nodeId.HasValue) return RedirectToPage("../Error");
+            this.node = controller.node.Find(nodeId);
 
             return Page();
+        }
+
+
+        public IActionResult OnPostReturn()
+        {
+            return RedirectToPage("./ShowJsonTree");
         }
     }
 }

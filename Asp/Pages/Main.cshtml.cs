@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NodesDLL;
-using Syncfusion.HtmlConverter;
-using Syncfusion.Pdf;
 
 namespace Asp
 {
@@ -69,12 +66,10 @@ namespace Asp
 
             return Page();
         }
-
-        public IActionResult OnPost()
+      
+        public IActionResult OnPostJsonResult()
         {
             node = controller.node;
-
-            #region SaveJSON
 
             List<int?> allId = new List<int?>();
             node.MoveNode(ref allId);
@@ -93,28 +88,11 @@ namespace Asp
 
             System.IO.File.WriteAllText(path, json);
 
-            #endregion
-
-            #region SavePDF
-
-            HtmlToPdfConverter converter = new HtmlToPdfConverter();
-
-            WebKitConverterSettings settings = new WebKitConverterSettings();
-            settings.WebKitPath = System.IO.Path.Combine(hosting.ContentRootPath, "QtBinariesWindows");
-            converter.ConverterSettings = settings;
-            //TODO: не работает
-            PdfDocument document = converter.Convert("https://localhost:44319/Main/" + controller.groupId);
-           
-            MemoryStream ms = new MemoryStream();
-            document.Save(ms);
-            document.Close();
-
-            ms.Position = 0;
-            FileStreamResult fileStreamResult = new FileStreamResult(ms, "application/pdf");
-            fileStreamResult.FileDownloadName = "nodes-" + Guid.NewGuid() + ".pdf";
-            return fileStreamResult;
-            #endregion
-
+            return Page();
+        }
+      
+        public IActionResult OnPostPdfResult()
+        {
             return Page();
         }
     }

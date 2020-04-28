@@ -9,8 +9,10 @@
 <a asp-page="./Index" class="btn btn-primary">Return to menu</a>
 
 @if (@Model.node != null)
-{<form method="post">
-        <button type="submit" class="btn btn-primary">Save JSON&Pdf</button>
+{
+    <form method="post">
+        <button asp-page-handler="JsonResult" class="btn btn-primary">Save JSON</button>
+        <button asp-page-handler="PdfResult" class="btn btn-primary">Save Pdf</button>
     </form>
 
     <form method="get">
@@ -41,5 +43,5 @@
         </div>
 
     </form>
-}
 
+}

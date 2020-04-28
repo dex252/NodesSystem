@@ -14,6 +14,8 @@ namespace Asp
         public IController controller { get; }
         public List<string> pathList { get; set; }
         public Node node { get; set; }
+        [TempData]
+        public string Message { get; set; }
 
         [BindProperty]
         public string file { get; set; }
@@ -42,7 +44,7 @@ namespace Asp
                     Text = n.ToString()
                 }).ToList();
 
-            if (controller.json!= null)
+            if (controller.json != null)
             {
                 controller.state = false;
                 Console.WriteLine(controller.json);
@@ -55,6 +57,7 @@ namespace Asp
                     NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
                 });
 
+                controller.node = node;
             }
         }
 
@@ -66,6 +69,13 @@ namespace Asp
             controller.state = true;
 
             return RedirectToPage("./ShowJsonTree");
+        }
+
+        public IActionResult OnPostSaveOnServer()
+        {
+            controller.state = true;
+
+            return RedirectToPage("./LoadTree");
         }
     }
 }

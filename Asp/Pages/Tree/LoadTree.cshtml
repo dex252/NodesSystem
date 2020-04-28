@@ -1,0 +1,36 @@
+﻿@page
+@model Asp.LoadTreeModel
+@{
+    ViewData["Title"] = "LoadTree";
+}
+
+<h1>LoadTree</h1>
+
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
+@if (@Model.node != null)
+{
+<form  method="post">
+    <div class="text-info">Сохранить дерево на сервере?</div>
+    <input type="hidden" asp-for="group.date" />
+    <input type="hidden" asp-for="node" />
+    <div class="form-group">
+        <label asp-for="group.name"></label>
+        <input asp-for="group.name" class="form-control" />
+        <span class="text-danger" asp-validation-for="group.name"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Load tree</button>
+</form>
+}
+else
+{
+    <div class="text-danger">Ошибка при чтении узла</div>
+}
+
+
+<form asp-page-handler="Return" method="post">
+    <button class="btn btn-primary">Назад</button>
+</form>

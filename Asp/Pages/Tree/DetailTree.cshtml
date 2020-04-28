@@ -1,15 +1,13 @@
-﻿@page "{groupId:int?}/{nodeId:int?}"
-@model Asp.DetailModel
+﻿@page "{nodeId:int?}"
+@model Asp.DetailTreeModel
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "DetailTree";
 }
 
 <h1>Просмотр узла</h1>
-@if (Model.Message != null)
-{
-    <div class="alert alert-info">@Model.Message</div>
-}
-@if (@Model.node != null)
+
+<form method="get">
+    @if (@Model.node != null)
     {
         <div>@Html.LabelFor(e => e.node.Unit.type): @Model.node.Unit.type</div>
         <div>@Html.LabelFor(e => e.node.Unit.name): @Model.node.Unit.name</div>
@@ -20,13 +18,8 @@
         <div>@Html.LabelFor(e => e.node.Unit.curatorial_position): @Model.node.Unit.curatorial_position</div>
         <div>@Html.LabelFor(e => e.node.Unit.curatorial_fullname): @Model.node.Unit.curatorial_fullname</div>
     }
+</form>
 
-
-<a class="btn btn-info btn-additional-style"
-   asp-page="./ShowJsonTree">
-    <i class="btn-text">Назад</i>
-</a>
-
-
-
-
+<form asp-page-handler="Return" method="post">
+    <button class="btn btn-primary">Назад</button>
+</form>
